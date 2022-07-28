@@ -1,0 +1,19 @@
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Mac
+.DS_Store
+
+# Maven
+log/
+target/
+
+*.class
+/bin
+
+/cats
+/.metadata/
+
+src/main/resources/config/application.properties
