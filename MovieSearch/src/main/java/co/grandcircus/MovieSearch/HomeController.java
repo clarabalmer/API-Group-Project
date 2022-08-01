@@ -1,5 +1,7 @@
 package co.grandcircus.MovieSearch;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,7 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class HomeController {
 	@Autowired
 	private MovieService movieService;
-	
+	@Autowired
+	private MovieRepository repo;
 	
 	@RequestMapping("/")
 	public String showIndex() {
@@ -25,12 +28,18 @@ public class HomeController {
 	}
 	@RequestMapping("/confirm")
 	public String addFavorite(@RequestParam int movieId, Model model) {
-		
-		model.addAttribute("movie", movieService.getMovieById(movieId));
+		MovieModel movieModel = new MovieModel(movieId); 
+		repo.save(movieModel);
+		Optional<MovieModel> optionalMovieModel = repo.findByApiId(movieId);
+		MovieModel retrievedMovieModel = optionalMovieModel.get();
+		//movieModel.getId()
+		model.addAttribute("movie", movieService.getMovieById(retrievedMovieModel.getApiId()));
 		return "confirm";
 	}
 	@RequestMapping("/favorites")
 	public String showFavorites() {
 		return "favorites";
 	}
+	
+	
 }
