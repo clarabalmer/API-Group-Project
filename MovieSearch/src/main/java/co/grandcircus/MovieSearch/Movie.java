@@ -14,6 +14,9 @@ public class Movie {
 	@JsonProperty("release_date")
 	private String releaseDate;
 	private String title;
+	
+	
+	
 	public int[] getGenreId() {
 		return genreId;
 	}
