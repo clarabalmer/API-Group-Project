@@ -9,7 +9,7 @@ public interface MovieRepository extends MongoRepository<MovieModel, String> {
 	
 	List<MovieModel> findAll();
 	
-	void deleteById(String id);
+	void deleteByApiId(int id);
 	
 	MovieModel save(MovieModel entity );
 	
