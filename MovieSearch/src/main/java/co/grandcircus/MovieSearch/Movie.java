@@ -59,5 +59,9 @@ public class Movie {
 	public void setTitle(String title) {
 		this.title = title;
 	}
+	public Movie(int id) {
+		this.id = id;
+	}
+	public Movie() {}
 	
 }

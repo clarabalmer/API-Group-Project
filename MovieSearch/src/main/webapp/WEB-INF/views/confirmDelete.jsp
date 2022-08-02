@@ -6,18 +6,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Confirmation Add</title>
+<title>Confirm Delete</title>
 </head>
 <body>
-	<h1>Movie Added To Favorites</h1>
-	<a href="/favorites">View Favorites</a>
-	<a href="/">Go To Home Page</a>
+<h1>Movie Deleted From Favorites</h1>
+<a href="/favorites">View Favorites</a>
+<a href="/">Go To Home Page</a>
 	<ul>
 		<li>
 			${movie.title} <br>
 			<img src="https://image.tmdb.org/t/p/w185/${movie.posterPath}"/>
 		</li>
 	</ul>
-	<div>${message}</div>
 </body>
 </html>
