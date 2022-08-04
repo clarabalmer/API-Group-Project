@@ -19,7 +19,8 @@ public class UserController {
 	private UserRepository repo;
 	
 	@RequestMapping("/login")
-	public String showLogin() {
+	public String showLogin(Model model) {
+		model.addAttribute("message", "Enter an existing username, or start a new one:");
 		return "login";
 	}
 	@RequestMapping("/userhome")
@@ -94,7 +95,7 @@ public class UserController {
 		model.addAttribute("username", username);
 		Movie movie = movieService.getMovieById(movieId);
 		model.addAttribute("movie", movie);
-		return "userDetails";
+		return "userdetails";
 	}
 	@PostMapping("/userDeleteFavorite")
 	public String userDeleteFave(@RequestParam int movieId, @RequestParam String username, Model model) {
@@ -137,5 +138,23 @@ public class UserController {
 	@RequestMapping("/logout")
 	public String logout() {
 		return "home";
+	}
+	@RequestMapping("/deleteUser")
+	public String deleteUserAccount(@RequestParam String username, Model model) {
+		String message = "Are you sure you want to delete your account, " + username + "?";
+		model.addAttribute("message", message);
+		model.addAttribute("username", username);
+		return "deleteuser";
+	}
+	@PostMapping("/reallyDelete")
+	public String reallyDelete(@RequestParam String username, @RequestParam String confirmUsername, Model model) {
+		if (username.equals(confirmUsername)) {
+			repo.deleteByUsername(username);
+			model.addAttribute("message", username + "'s account has been deleted. Feel free to start a new one!");
+			return "login";
+		}
+		model.addAttribute("username", username);
+		model.addAttribute("message", "Confirmation didn't match, so we didn't delete your account, " + username + ".");
+		return "userhome";
 	}
 }

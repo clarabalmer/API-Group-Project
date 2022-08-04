@@ -15,12 +15,11 @@
 		<a href="/login">Login</a>
 	</div>
 	<h1>Movie Search</h1>
-	
-	<form action="/search" method="POST">
-		<div class="forms">
+	<div class="forms">
+		<form action="/search" method="POST">
 			Search Movies: <input type="text" value="" name="search"/>
 			<input type="submit"/>
-		</div>
-	</form>
+		</form>
+	</div>
 </body>
 </html>

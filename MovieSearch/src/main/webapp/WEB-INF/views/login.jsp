@@ -15,13 +15,12 @@
 		<a href="/">Go To Home Page</a>
 	</div>
 	<h1>Login</h1>
+	<h2>${message}</h2>
 	<div class=forms>
 		<form action="/login" method="POST">
-			Enter an existing username, or start a new one: <br>
 			<input type="text" name="username"/>
 			<input type="submit"/>
 		</form>
 	</div>
-
 </body>
 </html>

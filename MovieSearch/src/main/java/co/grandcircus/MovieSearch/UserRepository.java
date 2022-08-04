@@ -10,7 +10,7 @@ public interface UserRepository extends MongoRepository<UserModel, String> {
 	List<UserModel> findAll();
 	Optional<UserModel> findByUsername(String username);
 	UserModel save(UserModel entity);
-	Optional<UserModel> findByUsernameAndFavoritesContaining(String username, MovieModel movieModel);
+	void deleteByUsername(String username);
 	@Update("{ '$push' : { 'favorites' : ?1 } } ")
 	void findAndPushFavoriteByUsername(String username, MovieModel movieModel);
 	@Update("{ '$pull' : { 'favorites' : ?1 } }")
