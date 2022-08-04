@@ -3,7 +3,7 @@ package co.grandcircus.MovieSearch;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document
+@Document("movies")
 public class MovieModel {
 	private int apiId;
 	private double rating;
