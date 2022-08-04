@@ -15,7 +15,7 @@
 	<ul>
 		<c:forEach var="movie" items="${movieArray}">
 			<li>
-				${movie.title} <br>
+				${movie.title}<br>
 				<img src="https://image.tmdb.org/t/p/w185/${movie.posterPath}"/><br>
 				<p>Add this film to the favorites list?<br>
 				 Fill out a rating then hit submit!</p>
@@ -25,11 +25,10 @@
 					 <input type="number" name="rating" value="0" min="0" max="5"/><span>Stars</span><br>
 					<input type="submit" value="Favorite this film"/><br>
 				</form>
-			<form action="/Overview" method="Post">
-				<input type="hidden" name="id" value="${movie.id}"/>
-					<input type="submit" value="${movie.title}"/><br>
+				<form action="/overview" method="Post">
+					<input type="hidden" name="id" value="${movie.id}"/>
+					<input type="submit" value="See Overview"/>
 				</form>
-			
 			</li>
 		</c:forEach>
 	</ul>

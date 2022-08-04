@@ -25,4 +25,9 @@ public class MovieService {
 		Movie response = restTemplate.getForObject(url, Movie.class, idString, key);
 		return response;
 	}
+
+
+	
+
+	
 }
