@@ -7,14 +7,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Overview</title>
+<link href="style.css" rel="stylesheet">
 </head>
 <body>
 	<h1>Overview</h1>
 	<a href="/">Go To Home Page</a>
 		<h3>${movie.title}</h3>
 		<img src="https://image.tmdb.org/t/p/w185/${movie.posterPath}"/>
-		<p>${movie.releaseDate}</p>
-		<p>${movie.language}</p>
+		Released <p>${movie.releaseDate}</p>
 		<p>${movie.overview}</p>
 	
 		

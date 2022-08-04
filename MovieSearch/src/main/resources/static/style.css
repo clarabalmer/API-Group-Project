@@ -2,7 +2,7 @@
 body {
 	border-image: url(filmBorder.png) 25 25 round;
 }
-h1 {
+h1, h2 {
 	text-align: center;
 }
 .links {
@@ -11,13 +11,21 @@ h1 {
 	display: flex;
 	justify-content: space-around;
 }
+.forms {
+	padding: 40px;
+	font-size: 20px;
+	text-align: center;
+}
+.inline {
+	display: inline;
+}
 ul {
 	text-align: center;
 	list-style: none;
 }
+.search {
+	text-align: center;
+}
 .movieTitle {
 	font-size: 30px;
-}
-#search {
-	text-align: center;
 }

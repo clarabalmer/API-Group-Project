@@ -8,17 +8,17 @@
 <meta charset="UTF-8">
 <title>Movie Search</title>
 <link href="style.css" rel="stylesheet">
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 </head>
 <body>
 	<div class=links>
-		<a href="/favorites">View Favorites</a>
+		<a href="/favorites">Public Favorites</a>
+		<a href="/login">Login</a>
 	</div>
-	<h1>Watchlist</h1>
+	<h1>Movie Search</h1>
 	
 	<form action="/search" method="POST">
-		<div id="search">
-			Search Movies: <input type="text" name="search"/>
+		<div class="forms">
+			Search Movies: <input type="text" value="" name="search"/>
 			<input type="submit"/>
 		</div>
 	</form>

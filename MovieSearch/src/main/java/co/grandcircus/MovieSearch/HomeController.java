@@ -35,7 +35,7 @@ public class HomeController {
 				Optional<MovieModel> checkMovieModel = repo.findByApiId(movieId);
 				
 				if(checkMovieModel.isPresent()) {
-					String message = "That movie is already in your favorites!";
+					String message = "That movie is already in the public favorites list";
 					model.addAttribute("message", message);
 					model.addAttribute("movie", movieService.getMovieById(movieId));
 				}else {
@@ -45,7 +45,7 @@ public class HomeController {
 					Optional<MovieModel> optionalMovieModel = repo.findByApiId(movieId);
 					MovieModel retrievedMovieModel = optionalMovieModel.get();
 					Movie movie = movieService.getMovieById(retrievedMovieModel.getApiId());
-					String message = movie.getTitle() + " successfully added to favorites";
+					String message = movie.getTitle() + " successfully added to public favorites";
 					model.addAttribute("message", message);
 					model.addAttribute("movie", movie);
 					model.addAttribute("rating", rating);
@@ -55,7 +55,7 @@ public class HomeController {
 				repo.deleteByApiId(movieId);
 				Movie movie = movieService.getMovieById(movieId);
 				model.addAttribute("movie", movie);
-				String message = movie.getTitle() + " was deleted from your database";
+				String message = movie.getTitle() + " was deleted from the public favorites list";
 				model.addAttribute("message", message);
 				break;
 			default:
@@ -77,8 +77,6 @@ public class HomeController {
 	
 	@PostMapping("/overview")
 	public String showOverview(@RequestParam int id, Model model) {
-		//Movie movie = movieService.getMovieById(id);
-		//model.addAttribute("movie", movie);
 		model.addAttribute("movie", movieService.getMovieById(id));
 		return "overview";
 	}

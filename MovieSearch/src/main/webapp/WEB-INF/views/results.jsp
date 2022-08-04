@@ -8,11 +8,10 @@
 <meta charset="UTF-8">
 <title>Results</title>
 <link href="style.css" rel="stylesheet">
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 </head>
 <body>
 	<div class=links>
-		<a href="/favorites">View Favorites</a>
+		<a href="/favorites">Public Favorites</a>
 		<a href="/">Go To Home Page</a>
 	</div>
 	<h1>Movie Results</h1>

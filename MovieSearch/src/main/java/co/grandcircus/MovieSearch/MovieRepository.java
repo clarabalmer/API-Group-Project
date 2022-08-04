@@ -11,7 +11,7 @@ public interface MovieRepository extends MongoRepository<MovieModel, String> {
 	
 	void deleteByApiId(int id);
 	
-	MovieModel save(MovieModel entity );
+	MovieModel save(MovieModel entity);
 	
 	Optional<MovieModel> findByApiId(int apiId);
 	

@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Confirmation</title>
+<title>Login</title>
 <link href="style.css" rel="stylesheet">
 </head>
 <body>
@@ -14,14 +14,14 @@
 		<a href="/favorites">Public Favorites</a>
 		<a href="/">Go To Home Page</a>
 	</div>
-	<h1>${message}</h1>
-	
-	<ul>
-		<li>
-			${movie.title} <br>
-			${rating} Stars!<br>
-			<img src="https://image.tmdb.org/t/p/w185/${movie.posterPath}"/>
-		</li>
-	</ul>
+	<h1>Login</h1>
+	<div class=forms>
+		<form action="/login" method="POST">
+			Enter an existing username, or start a new one: <br>
+			<input type="text" name="username"/>
+			<input type="submit"/>
+		</form>
+	</div>
+
 </body>
 </html>

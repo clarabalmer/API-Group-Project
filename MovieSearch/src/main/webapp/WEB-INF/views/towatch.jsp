@@ -6,29 +6,30 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>The Faves</title>
+<title>${username}'s To Watch</title>
 <link href="style.css" rel="stylesheet">
 </head>
 <body>
 	<div class=links>
-		<a href="/">Go To Home Page</a>
+		<a href="/userhome?username=${username}">${username}'s Homepage</a>
+		<a href="/myFavorites?username=${username}">${username}'s Favorites</a>
+		<a href="/logout">Logout</a>
 	</div>
-	<h1>Public Favorites</h1>
+	<h1>${username}'s To Watch List</h1>
+	<h2>${message}</h2>
 	<ul>
-		<c:forEach var="movie" items="${favMovieList}" varStatus="status">
+		<c:forEach var="movie" items="${toWatch}" varStatus="status">
 			<li>
-				${movie.title} <br>
-				${favList[status.index].rating}<br>
+				<div class="movieTitle">${movie.title} </div>
 				<img src="https://image.tmdb.org/t/p/w185/${movie.posterPath}"/><br>
 			
-				<form action="/confirm?action=delete" method="Post">
+				<form action="/userDeleteToWatch" method="Post">
+					<input type="hidden" name="username" value="${username}"/>
 					<input type="hidden" name="movieId" value="${movie.id}"/>
-					<input type="hidden" name="rating" value="0"/>
-					<input type="submit" value="Delete this film"/>
+					<input type="submit" value="Delete from Watchlist"/>
 				</form>
 			</li>
 		</c:forEach>
 	</ul>
-	
 </body>
 </html>
