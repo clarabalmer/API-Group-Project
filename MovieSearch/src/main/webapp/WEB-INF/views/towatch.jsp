@@ -22,11 +22,20 @@
 			<li>
 				<div class="movieTitle">${movie.title} </div>
 				<img src="https://image.tmdb.org/t/p/w185/${movie.posterPath}"/><br>
-			
+				<form action="/userDetails" method="Post">
+					<input type="hidden" name="username" value="${username}"/>
+					<input type="hidden" name="movieId" value="${movie.id}"/>
+					<input type="submit" value="Details"/>
+				</form>
 				<form action="/userDeleteToWatch" method="Post">
 					<input type="hidden" name="username" value="${username}"/>
 					<input type="hidden" name="movieId" value="${movie.id}"/>
 					<input type="submit" value="Delete from Watchlist"/>
+				</form>
+				<form action="/deleteAndAdd" method="Post">
+					<input type="hidden" name="username" value="${username}"/>
+					<input type="hidden" name="movieId" value="${movie.id}"/>
+					<input type="submit" value="Move to Favorites"/>
 				</form>
 			</li>
 		</c:forEach>

@@ -2,17 +2,23 @@
 body {
 	border-image: url(filmBorder.png) 25 25 round;
 }
-h1, h2 {
+h1 {
+	text-align: center;
+	padding: 45px;
+}
+h2 {
+	text-align: center;
+}
+.details {
 	text-align: center;
 }
 .links {
-	font-size: 30px;
+	font-size: 25px;
 	text-align: center;
 	display: flex;
 	justify-content: space-around;
 }
 .forms {
-	padding: 40px;
 	font-size: 20px;
 	text-align: center;
 }

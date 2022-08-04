@@ -20,7 +20,10 @@
 				${movie.title} <br>
 				${favList[status.index].rating}<br>
 				<img src="https://image.tmdb.org/t/p/w185/${movie.posterPath}"/><br>
-			
+				<form action="overview" method="post">
+					<input type="hidden" name="id" value="${movie.id}"/>
+					<input type="submit" value="See Overview"/>
+				</form>
 				<form action="/confirm?action=delete" method="Post">
 					<input type="hidden" name="movieId" value="${movie.id}"/>
 					<input type="hidden" name="rating" value="0"/>

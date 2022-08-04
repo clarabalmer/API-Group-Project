@@ -89,6 +89,13 @@ public class UserController {
 		model.addAttribute("favorites", favorites);
 		return "userfavorites";
 	}
+	@RequestMapping("/userDetails")
+	public String showUserDetails(@RequestParam String username, @RequestParam int movieId, Model model) {
+		model.addAttribute("username", username);
+		Movie movie = movieService.getMovieById(movieId);
+		model.addAttribute("movie", movie);
+		return "userDetails";
+	}
 	@PostMapping("/userDeleteFavorite")
 	public String userDeleteFave(@RequestParam int movieId, @RequestParam String username, Model model) {
 		repo.findAndPullFavoriteByUsername(username, new MovieModel(movieId, -1));
@@ -101,6 +108,15 @@ public class UserController {
 	public String userDeleteWatch(@RequestParam int movieId, @RequestParam String username, Model model) {
 		repo.findAndPullToWatchByUsername(username, new MovieModel(movieId, -1));
 		String message = "We deleted that movie for you, " + username + " .";
+		model.addAttribute("message", message);
+		model.addAttribute("username", username);
+		return "userhome";
+	}
+	@PostMapping("/deleteAndAdd")
+	public String deleteAndAdd(@RequestParam String username, @RequestParam int movieId, Model model) {
+		repo.findAndPullToWatchByUsername(username, new MovieModel(movieId, -1));
+		repo.findAndPushFavoriteByUsername(username, new MovieModel(movieId, -1));
+		String message = "We moved that movie to your favorites, " + username + " .";
 		model.addAttribute("message", message);
 		model.addAttribute("username", username);
 		return "userhome";

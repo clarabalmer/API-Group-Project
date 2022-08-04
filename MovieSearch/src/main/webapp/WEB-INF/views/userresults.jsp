@@ -28,13 +28,16 @@
 					<input type="hidden" name="movieId" value="${movie.id}"/>
 					<input type="submit" value="Add to Favorites"/>
 				</form>
-
 				<form action="/addToWatch" method="POST">
 					<input type="hidden" name="username" value="${username}"/>
 					<input type="hidden" name="movieId" value="${movie.id}"/>
 					<input type="submit" value="Add to Watchlist"/>
 				</form>
-				
+				<form action="/userDetails" method="Post">
+					<input type="hidden" name="username" value="${username}"/>
+					<input type="hidden" name="movieId" value="${movie.id}"/>
+					<input type="submit" value="Details"/>
+				</form>
 				<br>
 			</li>
 		</c:forEach>
