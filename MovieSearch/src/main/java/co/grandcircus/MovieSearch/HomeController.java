@@ -62,4 +62,12 @@ public class HomeController {
 		return "favorites";
 	}
 	
+	@PostMapping("/overview")
+	public String showOverview(@RequestParam int id, Model model) {
+		//Movie movie = movieService.getMovieById(id);
+		//model.addAttribute("movie", movie);
+		model.addAttribute("movie", movieService.getMovieById(id));
+		return "overview";
+	}
+	
 }

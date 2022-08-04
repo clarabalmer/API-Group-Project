@@ -15,11 +15,19 @@
 	<ul>
 		<c:forEach var="movie" items="${movieArray}">
 			<li>
-				${movie.title} <br>
+				${movie.title}<br>
 				<img src="https://image.tmdb.org/t/p/w185/${movie.posterPath}"/><br>
 				<form action="/confirm" method="Post">
 					<input type="hidden" name="movieId" value="${movie.id}"/>
 					<input type="submit" value="Favorite this film"/>
+					
+					
+				</form>
+				
+				<form action="/overview" method="Post">
+					<input type="hidden" name="id" value="${movie.id}"/>
+					<input type="submit" value="See Overview"/>
+					
 				</form>
 			</li>
 		</c:forEach>
