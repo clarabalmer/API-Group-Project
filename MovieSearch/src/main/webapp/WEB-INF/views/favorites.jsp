@@ -12,9 +12,10 @@
 	<h1>Favorites</h1>
 	<a href="/">Go To Home Page</a>
 	<ul>
-		<c:forEach var="movie" items="${favMovieList}">
+		<c:forEach var="movie" items="${favMovieList}" varStatus="status">
 			<li>
 				${movie.title} <br>
+				${favList[status.index].rating}<br>
 				<img src="https://image.tmdb.org/t/p/w185/${movie.posterPath}"/><br>
 			
 				<form action="/confirmDelete" method="Post">

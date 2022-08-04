@@ -36,18 +36,19 @@ public class HomeController {
 		return "confirmDelete";
 	}
 	@PostMapping("/confirm")
-	public String addFavorite(@RequestParam int movieId, Model model) {
+	public String addFavorite(@RequestParam int movieId, @RequestParam double rating, Model model) {
 		Optional<MovieModel> checkMovieModel = repo.findByApiId(movieId);
 		if(checkMovieModel.isPresent()) {
 			String message = "Movie already in favorites!";
 			model.addAttribute("message", message);
 			model.addAttribute("movie", movieService.getMovieById(movieId));
 		}else {
-			MovieModel movieModel = new MovieModel(movieId); 
+			MovieModel movieModel = new MovieModel(movieId, rating); 
 			repo.save(movieModel);
 			Optional<MovieModel> optionalMovieModel = repo.findByApiId(movieId);
 			MovieModel retrievedMovieModel = optionalMovieModel.get();
 			model.addAttribute("movie", movieService.getMovieById(retrievedMovieModel.getApiId()));
+			model.addAttribute("rating", rating);
 		}
 		return "confirm";
 	}
@@ -59,6 +60,7 @@ public class HomeController {
 			favMovies.add(movieService.getMovieById(favList.get(i).getApiId()));
 		}
 		model.addAttribute("favMovieList",favMovies);
+		model.addAttribute("favList", favList);
 		return "favorites";
 	}
 	
