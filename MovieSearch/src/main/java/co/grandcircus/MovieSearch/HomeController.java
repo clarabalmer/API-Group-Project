@@ -29,7 +29,7 @@ public class HomeController {
 		return "results";
 	}
 	@PostMapping("/confirm")
-	public String showConfirmation(@RequestParam String action, @RequestParam int movieId, Model model) {
+	public String showConfirmation(@RequestParam String action, @RequestParam int movieId, @RequestParam double rating, Model model) {
 		switch (action) {
 			case "add":
 				Optional<MovieModel> checkMovieModel = repo.findByApiId(movieId);
@@ -39,14 +39,16 @@ public class HomeController {
 					model.addAttribute("message", message);
 					model.addAttribute("movie", movieService.getMovieById(movieId));
 				}else {
-					MovieModel movieModel = new MovieModel(movieId); 
+					
+					MovieModel movieModel = new MovieModel(movieId, rating); 
 					repo.save(movieModel);
 					Optional<MovieModel> optionalMovieModel = repo.findByApiId(movieId);
 					MovieModel retrievedMovieModel = optionalMovieModel.get();
 					Movie movie = movieService.getMovieById(retrievedMovieModel.getApiId());
-					model.addAttribute("movie", movie);
-					String message = movie.getTitle() + " was added to your database";
+					String message = movie.getTitle() + " successfully added to favorites";
 					model.addAttribute("message", message);
+					model.addAttribute("movie", movie);
+					model.addAttribute("rating", rating);
 				}
 				break;
 			case "delete":
@@ -69,7 +71,16 @@ public class HomeController {
 			favMovies.add(movieService.getMovieById(favList.get(i).getApiId()));
 		}
 		model.addAttribute("favMovieList",favMovies);
+		model.addAttribute("favList", favList);
 		return "favorites";
+	}
+	
+	@PostMapping("/overview")
+	public String showOverview(@RequestParam int id, Model model) {
+		//Movie movie = movieService.getMovieById(id);
+		//model.addAttribute("movie", movie);
+		model.addAttribute("movie", movieService.getMovieById(id));
+		return "overview";
 	}
 	
 }

@@ -20,6 +20,7 @@
 	<ul>
 		<li>
 			${movie.title} <br>
+			${rating} Stars!<br>
 			<img src="https://image.tmdb.org/t/p/w185/${movie.posterPath}"/>
 		</li>
 	</ul>

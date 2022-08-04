@@ -16,13 +16,15 @@
 	</div>
 	<h1>Favorites</h1>
 	<ul>
-		<c:forEach var="movie" items="${favMovieList}">
+		<c:forEach var="movie" items="${favMovieList}" varStatus="status">
 			<li>
 				${movie.title} <br>
+				${favList[status.index].rating}<br>
 				<img src="https://image.tmdb.org/t/p/w185/${movie.posterPath}"/><br>
 			
 				<form action="/confirm?action=delete" method="Post">
 					<input type="hidden" name="movieId" value="${movie.id}"/>
+					<input type="hidden" name="rating" value="0"/>
 					<input type="submit" value="Delete this film"/>
 				</form>
 			</li>

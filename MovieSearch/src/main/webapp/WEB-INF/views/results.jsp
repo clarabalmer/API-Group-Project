@@ -21,9 +21,17 @@
 			<li>
 				<div class="movieTitle">${movie.title} </div>
 				<img src="https://image.tmdb.org/t/p/w185/${movie.posterPath}"/><br>
-				<form action="/confirm?action=add" method="Post">
+				<form action="/confirm?action=add" method="Post">${movie.title}<br>
+					<p>Add this film to the favorites list?<br>
+				 	Fill out a rating then hit submit!</p>
 					<input type="hidden" name="movieId" value="${movie.id}"/>
-					<input type="submit" value="Favorite this film"/>
+					<p>Personal Rating:</p>
+					 <input type="number" name="rating" value="0" min="0" max="5"/><span>Stars</span><br>
+					<input type="submit" value="Favorite this film"/><br>
+				</form>
+				<form action="/overview" method="Post">
+					<input type="hidden" name="id" value="${movie.id}"/>
+					<input type="submit" value="See Overview"/>
 				</form>
 				<br>
 			</li>
