@@ -28,26 +28,36 @@ public class HomeController {
 		model.addAttribute("movieArray", movieService.getSearchResults(search).getResults());
 		return "results";
 	}
-	@PostMapping("/confirmDelete")
-	public String deleteFavorite(@RequestParam int movieId, Model model) {
-		repo.deleteByApiId(movieId);
-		Movie movie = movieService.getMovieById(movieId);
-		model.addAttribute("movie", movie);
-		return "confirmDelete";
-	}
 	@PostMapping("/confirm")
-	public String addFavorite(@RequestParam int movieId, Model model) {
-		Optional<MovieModel> checkMovieModel = repo.findByApiId(movieId);
-		if(checkMovieModel.isPresent()) {
-			String message = "Movie already in favorites!";
-			model.addAttribute("message", message);
-			model.addAttribute("movie", movieService.getMovieById(movieId));
-		}else {
-			MovieModel movieModel = new MovieModel(movieId); 
-			repo.save(movieModel);
-			Optional<MovieModel> optionalMovieModel = repo.findByApiId(movieId);
-			MovieModel retrievedMovieModel = optionalMovieModel.get();
-			model.addAttribute("movie", movieService.getMovieById(retrievedMovieModel.getApiId()));
+	public String showConfirmation(@RequestParam String action, @RequestParam int movieId, Model model) {
+		switch (action) {
+			case "add":
+				Optional<MovieModel> checkMovieModel = repo.findByApiId(movieId);
+				
+				if(checkMovieModel.isPresent()) {
+					String message = "That movie is already in your favorites!";
+					model.addAttribute("message", message);
+					model.addAttribute("movie", movieService.getMovieById(movieId));
+				}else {
+					MovieModel movieModel = new MovieModel(movieId); 
+					repo.save(movieModel);
+					Optional<MovieModel> optionalMovieModel = repo.findByApiId(movieId);
+					MovieModel retrievedMovieModel = optionalMovieModel.get();
+					Movie movie = movieService.getMovieById(retrievedMovieModel.getApiId());
+					model.addAttribute("movie", movie);
+					String message = movie.getTitle() + " was added to your database";
+					model.addAttribute("message", message);
+				}
+				break;
+			case "delete":
+				repo.deleteByApiId(movieId);
+				Movie movie = movieService.getMovieById(movieId);
+				model.addAttribute("movie", movie);
+				String message = movie.getTitle() + " was deleted from your database";
+				model.addAttribute("message", message);
+				break;
+			default:
+				break;
 		}
 		return "confirm";
 	}

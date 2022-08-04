@@ -1,0 +1,23 @@
+@charset "UTF-8";
+body {
+	border-image: url(filmBorder.png) 25 25 round;
+}
+h1 {
+	text-align: center;
+}
+.links {
+	font-size: 30px;
+	text-align: center;
+	display: flex;
+	justify-content: space-around;
+}
+ul {
+	text-align: center;
+	list-style: none;
+}
+.movieTitle {
+	font-size: 30px;
+}
+#search {
+	text-align: center;
+}

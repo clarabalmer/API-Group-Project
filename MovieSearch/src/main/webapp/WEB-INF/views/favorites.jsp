@@ -7,17 +7,21 @@
 <head>
 <meta charset="UTF-8">
 <title>The Faves</title>
+<link href="style.css" rel="stylesheet">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 </head>
 <body>
+	<div class=links>
+		<a href="/">Go To Home Page</a>
+	</div>
 	<h1>Favorites</h1>
-	<a href="/">Go To Home Page</a>
 	<ul>
 		<c:forEach var="movie" items="${favMovieList}">
 			<li>
 				${movie.title} <br>
 				<img src="https://image.tmdb.org/t/p/w185/${movie.posterPath}"/><br>
 			
-				<form action="/confirmDelete" method="Post">
+				<form action="/confirm?action=delete" method="Post">
 					<input type="hidden" name="movieId" value="${movie.id}"/>
 					<input type="submit" value="Delete this film"/>
 				</form>

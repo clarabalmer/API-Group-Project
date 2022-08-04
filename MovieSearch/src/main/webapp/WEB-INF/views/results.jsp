@@ -7,20 +7,25 @@
 <head>
 <meta charset="UTF-8">
 <title>Results</title>
+<link href="style.css" rel="stylesheet">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 </head>
 <body>
+	<div class=links>
+		<a href="/favorites">View Favorites</a>
+		<a href="/">Go To Home Page</a>
+	</div>
 	<h1>Movie Results</h1>
-	<a href="/favorites">View Favorites</a>
-	<a href="/">Go To Home Page</a>
 	<ul>
 		<c:forEach var="movie" items="${movieArray}">
 			<li>
-				${movie.title} <br>
+				<div class="movieTitle">${movie.title} </div>
 				<img src="https://image.tmdb.org/t/p/w185/${movie.posterPath}"/><br>
-				<form action="/confirm" method="Post">
+				<form action="/confirm?action=add" method="Post">
 					<input type="hidden" name="movieId" value="${movie.id}"/>
 					<input type="submit" value="Favorite this film"/>
 				</form>
+				<br>
 			</li>
 		</c:forEach>
 	</ul>

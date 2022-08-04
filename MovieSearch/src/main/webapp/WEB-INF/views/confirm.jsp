@@ -6,18 +6,22 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Confirmation Add</title>
+<title>Confirmation</title>
+<link href="style.css" rel="stylesheet">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 </head>
 <body>
-	<h1>Movie Added To Favorites</h1>
-	<a href="/favorites">View Favorites</a>
-	<a href="/">Go To Home Page</a>
+	<div class=links>
+		<a href="/favorites">View Favorites</a>
+		<a href="/">Go To Home Page</a>
+	</div>
+	<h1>${message}</h1>
+	
 	<ul>
 		<li>
 			${movie.title} <br>
 			<img src="https://image.tmdb.org/t/p/w185/${movie.posterPath}"/>
 		</li>
 	</ul>
-	<div>${message}</div>
 </body>
 </html>
